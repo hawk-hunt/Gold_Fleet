@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Company;
 use App\Models\User;
+use App\Models\Notification;
+use App\Models\Vehicle;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -74,5 +76,76 @@ class DatabaseSeeder extends Seeder
         if ($testUser) {
             $testUser->update(['company_id' => $company->id, 'role' => 'driver']);
         }
+
+        // Create sample notifications
+        Notification::create([
+            'company_id' => $company->id,
+            'user_id' => $companyAdmin->id,
+            'type' => 'info',
+            'title' => 'Welcome to Gold Fleet',
+            'message' => 'Your fleet management system is now active. Start by adding your vehicles and drivers.',
+            'read' => false,
+        ]);
+
+        Notification::create([
+            'company_id' => $company->id,
+            'user_id' => null, // Company-wide
+            'type' => 'warning',
+            'title' => 'Vehicle Maintenance Due',
+            'message' => 'Vehicle #101 is due for service in 3 days.',
+            'read' => false,
+        ]);
+
+        Notification::create([
+            'company_id' => $company->id,
+            'user_id' => $companyAdmin->id,
+            'type' => 'success',
+            'title' => 'Trip Completed',
+            'message' => 'Trip #123 has been completed successfully.',
+            'read' => true,
+        ]);
+
+        // Create sample vehicles
+        Vehicle::updateOrCreate(
+            ['license_plate' => 'ABC-123'],
+            [
+                'company_id' => $company->id,
+                'make' => 'Ford',
+                'model' => 'F-150',
+                'year' => 2022,
+                'vin' => '1FTFW1ET2DFC12345',
+                'status' => 'active',
+                'fuel_capacity' => 26.0,
+                'fuel_type' => 'gasoline',
+            ]
+        );
+
+        Vehicle::updateOrCreate(
+            ['license_plate' => 'XYZ-789'],
+            [
+                'company_id' => $company->id,
+                'make' => 'Chevrolet',
+                'model' => 'Silverado',
+                'year' => 2021,
+                'vin' => '1GCVKREH1FZ123456',
+                'status' => 'active',
+                'fuel_capacity' => 24.0,
+                'fuel_type' => 'diesel',
+            ]
+        );
+
+        Vehicle::updateOrCreate(
+            ['license_plate' => 'DEF-456'],
+            [
+                'company_id' => $company->id,
+                'make' => 'Ram',
+                'model' => '1500',
+                'year' => 2023,
+                'vin' => '1C6SRFHTXKN123789',
+                'status' => 'maintenance',
+                'fuel_capacity' => 23.0,
+                'fuel_type' => 'gasoline',
+            ]
+        );
     }
 }
