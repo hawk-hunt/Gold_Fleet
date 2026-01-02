@@ -11,10 +11,6 @@ export default defineConfig({
         react({
             // Enable React Fast Refresh
             fastRefresh: true,
-            // Use classic JSX runtime for better preamble detection
-            jsxRuntime: 'classic',
-            // Explicitly include the preamble
-            include: /\.(tsx?|jsx?)$/,
         }),
     ],
     resolve: {

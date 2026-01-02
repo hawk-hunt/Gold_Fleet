@@ -1,7 +1,5 @@
 import React from 'react';
 
-/** @jsx React.createElement */
-
 /**
  * LandingPage Component
  * Modern, enterprise-grade SaaS welcome page for Fleet Management System
@@ -13,10 +11,8 @@ const LandingPage: React.FC = () => {
       {/* Hero Section */}
       <section className="relative overflow-hidden min-h-screen">
         {/* Background Video/Image */}
-        <video autoPlay muted loop className="absolute inset-0 w-full h-full object-cover">
+        <video autoPlay muted loop poster="/background-image/maxresdefault-3490897627.jpg" className="absolute inset-0 w-full h-full object-cover">
           <source src="/background-video/13197481_1920_1080_30fps.mp4" type="video/mp4" />
-          {/* Fallback image if video doesn't load */}
-          <img src="/background-image/maxresdefault-3490897627.jpg" alt="Background" className="absolute inset-0 w-full h-full object-cover" />
         </video>
         {/* Optional overlay for better text readability */}
         <div className="absolute inset-0 bg-black bg-opacity-30"></div>
