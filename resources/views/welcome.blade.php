@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="antialiased bg-gradient-to-br from-yellow-50 to-amber-50 min-h-screen">
     <div class="relative isolate px-6 pt-14 lg:px-8">
@@ -47,14 +47,14 @@
                 <!-- CTA Buttons -->
                 <div class="mt-10 flex items-center justify-center gap-x-6">
                     @auth
-                        <a href="{{ route('dashboard') }}" class="rounded-md bg-yellow-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-yellow-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600 transition-colors">
+                        <a href="/dashboard" class="rounded-md bg-yellow-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-yellow-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600 transition-colors">
                             Go to Dashboard
                         </a>
                     @else
-                        <a href="{{ route('register') }}" class="rounded-md bg-yellow-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-yellow-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600 transition-colors">
+                        <a href="/register" class="rounded-md bg-yellow-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-yellow-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600 transition-colors">
                             Get Started
                         </a>
-                        <a href="{{ route('login') }}" class="text-sm font-semibold leading-6 text-amber-700 hover:text-yellow-600 transition-colors">
+                        <a href="/login" class="text-sm font-semibold leading-6 text-amber-700 hover:text-yellow-600 transition-colors">
                             Sign In <span aria-hidden="true">→</span>
                         </a>
                     @endauth
